@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Login </title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      background: radial-gradient(circle at top, #4b0082, #000000 70%);
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    /* Bubble background */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background: #7e22ce55;
+      box-shadow: 0 0 20px #9333ea88;
+      animation: float 6s infinite ease-in-out;
+    }
+    @keyframes float {
+      0% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-25px) scale(1.05); }
+      100% { transform: translateY(0) scale(1); }
+    }
+    .b1 { width: 120px; height: 120px; bottom: 10%; left: 12%; animation-delay: 0s; }
+    .b2 { width: 80px; height: 80px; top: 20%; right: 15%; animation-delay: 1.8s; }
+    .b3 { width: 60px; height: 60px; bottom: 20%; right: 20%; animation-delay: 3s; }
+
+    /* Glassmorphism card */
+    .login-box {
+      width: 100%;
+      max-width: 380px;
+      padding: 35px 30px;
+      border-radius: 18px;
+      background: rgba(20, 20, 20, 0.55);
+      backdrop-filter: blur(15px);
+      border: 1px solid #a855f788;
+      box-shadow: 0 0 25px #9333ea66, 0 0 40px #5b21b688 inset;
+      animation: fadeUp 0.9s ease;
+    }
+
+    /* Fade-up animation */
+    @keyframes fadeUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to   { transform: translateY(0); opacity: 1; }
+    }
+
+    label {
+      font-size: 14px;
+      color: #d8b4fe;
+      margin-bottom: 3px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 6px;
+      border-radius: 10px;
+      border: 1px solid #7e22ce;
+      background: rgba(30, 0, 50, 0.6);
+      color: white;
+      font-size: 15px;
+      transition: 0.3s;
+    }
+    input:focus {
+      border-color: #c084fc;
+      box-shadow: 0 0 12px #a855f7aa;
+      outline: none;
+    }
+
+    /* Button */
+    .btn-login {
+      width: 100%;
+      padding: 13px;
+      margin-top: 20px;
+      border-radius: 12px;
+      font-weight: bold;
+      background: linear-gradient(135deg, #9333ea, #7c3aed);
+      transition: 0.25s;
+      box-shadow: 0 0 18px #8b5cf6aa;
+    }
+    .btn-login:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #a855f7dd;
+      cursor: pointer;
+    }
+
+    .title {
+      font-family: 'Orbitron', sans-serif;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px #c084fc;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- Floating background bubbles -->
+<div class="bubble b1"></div>
+<div class="bubble b2"></div>
+<div class="bubble b3"></div>
+
+<!-- LOGIN BOX -->
+<div class="login-box relative z-10">
+  <h1 class="text-center text-purple-300 text-3xl font-bold mb-6 title">
+    LOGIN PANEL
+  </h1>
+
+  <label>Username</label>
+  <input id="user">
+
+  <label>Password</label>
+  <input id="pass" type="password">
+
+  <button onclick="goLogin()" class="btn-login">
+    MASUK
+  </button>
+
+  <p id="msg" class="text-center text-red-400 mt-4 text-sm"></p>
+</div>
+
+<script>
+function goLogin() {
+  const u = document.getElementById("user").value.trim();
+  const p = document.getElementById("pass").value.trim();
+  const msg = document.getElementById("msg");
+
+  if (!u || !p) {
+    msg.style.color = "#ff6b6b";
+    msg.textContent = "Isi username dan password!";
+    return;
+  }
+
+  msg.style.color = "#c084fc";
+  msg.textContent = "Login berhasil, mengarahkan...";
+
+  setTimeout(() => {
+    window.location.href = "index.html";
+  }, 900);
+}
+</script>
+
+</body>
+</html>
